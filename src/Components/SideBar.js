@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 
 
 const SideBar = (props) => {
-    console.log(props)
+    
     const [menuOpen, setMenuOpen] = useState(true);
 
     const handleStateChange = () => {

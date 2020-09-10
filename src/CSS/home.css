@@ -1,0 +1,13 @@
+@media (min-width:320px)  and (max-width:768px){
+    .background-home{
+        background:orange;
+        height:100vh
+    }
+}
+
+@media (min-width:1024px) {
+    .background-home{
+        background:orange;
+        height:100vh
+    }
+}

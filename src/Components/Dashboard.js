@@ -2,18 +2,29 @@ import React , { useEffect} from 'react';
 import SideBar from './SideBar';
 import '../CSS/dashboard.css'
 import { getDashboard } from '../api/apiCalls'
+import {logout} from '../api/apiCalls';
+import { useHistory } from "react-router-dom";
 
 const Dashboard = (props) => {
  
+   const history = useHistory();
+   
     useEffect(() => {
         const getUserData = async () => {
-            const result = await getDashboard(props.match.params.userId)
-           console.log(result)
+            await getDashboard(props.match.params.userId)
         }
 
         getUserData()
     }, [props.match.params.userId]);
 
+    const handleClickLogout = () => {
+        logout()
+        localStorage.removeItem('user');
+        localStorage.removeItem('token');
+        history.push('/');
+    
+      }
+    
     return (
         <div data-test='app-component'>
             <div >
@@ -25,7 +36,7 @@ const Dashboard = (props) => {
             </div>
             
               
-
+        <button onClick={handleClickLogout}>Cerrar Sesión</button>
         </div>
     )
 }
