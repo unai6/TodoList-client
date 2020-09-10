@@ -41,6 +41,10 @@
         bottom: 4em;
         right: 1em;
     }
+
+    .dashboard{
+        background:white
+    }
 }
 
 @media (min-width:1024px) {

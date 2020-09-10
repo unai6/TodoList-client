@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import '../CSS/slideMenu.css';
+import {Link} from 'react-router-dom'
 
-const SideBar = () => {
+
+const SideBar = (props) => {
+    console.log(props)
     const [menuOpen, setMenuOpen] = useState(true);
 
     const handleStateChange = () => {
@@ -15,7 +18,10 @@ const SideBar = () => {
         <div className='bg-component'>
         <div className='div-buttons'>
             <button className='btn-categories' onClick={handleStateChange}> CATEGORÍAS</button>
-            <button className='btn-categories'> + NUEVA CATEGORÍA</button>
+            <Link to='/create-task/'>
+            <button className='btn-categories'> + NUEVA TAREA</button>
+
+            </Link>
         </div>
                     
             {
@@ -23,9 +29,12 @@ const SideBar = () => {
 
                     <div className='userMenu slide-right'>
                         <button className='close-menu' onClick={closeMenuHandler}><i className="far fa-times-circle close-menu"></i></button>
-                        <button onClick={closeMenuHandler} className="menu-item bm-icon bm-item btn-handler btn-homeinfo">
+                      
+                       <button onClick={closeMenuHandler} className="menu-item bm-icon bm-item btn-handler btn-homeinfo">
                             <i className="fas fa-home"></i> <a className='a-links' href='#Home'>PENDIENTES</a>
                         </button>
+
+                     
                         <button onClick={closeMenuHandler} className="menu-item bm-icon bm-item btn-handler btn-homeinfo">
                             <i className="far fa-address-card"></i> <a className='a-links' href='#About'>COMPLETADAS</a>
                         </button>
