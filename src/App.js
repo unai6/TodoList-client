@@ -2,7 +2,6 @@ import React from 'react';
 import  Dashboard  from './Components/Dashboard';
 import { Route } from "react-router-dom";
 import { BrowserRouter as Router, Switch,  } from "react-router-dom";
-import SideBar from './Components/SideBar';
 import { NewTask } from './Components/NewTask';
 import {Home} from './Components/Home';
 

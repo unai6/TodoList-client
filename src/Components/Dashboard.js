@@ -1,7 +1,7 @@
-import React , {useState, useEffect} from 'react';
+import React , { useEffect} from 'react';
 import SideBar from './SideBar';
 import '../CSS/dashboard.css'
-import {getDashboard} from '../api/apiCalls'
+import { getDashboard } from '../api/apiCalls'
 
 const Dashboard = (props) => {
  
