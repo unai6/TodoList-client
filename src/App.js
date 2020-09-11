@@ -14,7 +14,7 @@ import tokenAuth from './config/token';
 const token = localStorage.getItem('token');
 if(token) tokenAuth(token)
 
-function App() {
+export const App = () => {
 
   return (
     <Router>
@@ -31,4 +31,3 @@ function App() {
   );
 }
 
-export default App;

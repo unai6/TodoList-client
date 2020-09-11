@@ -14,10 +14,9 @@ export const AuthState = props => {
     token: localStorage.getItem("token"),
     loading: true  
   };
-  
   const [state, dispatch] = useReducer(AuthReducer, initialState);
   const history = useHistory();
- 
+
 
   const authenticate = async (data) => {
     try{

@@ -1,19 +1,19 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
 import AuthContext from '../auth/authContext';
 
 export const Login = () => {
 
-    const { register, handleSubmit, errors } = useForm();
+    const { register, handleSubmit } = useForm();
     const authContext = useContext(AuthContext);
     const { authenticate } = authContext;
-    const [isLoading, setisLoading] = useState(true)
-    const [error, setError] = useState(false)
+    // const [isLoading, setisLoading] = useState(true)
+    // const [error, setError] = useState(false)
 
     const onSubmit = async data => {
         try {
             await authenticate(data)
-            setisLoading(false);
+            // setisLoading(false);
                 
         } catch (error) {
             console.log(error)
