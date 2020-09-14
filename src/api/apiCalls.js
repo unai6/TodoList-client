@@ -15,8 +15,8 @@ export const logout = () => {
 
 };
 
-export const getDashboard = (userId, token) => {
-    return axiosInstance.get(`/dashboard/${userId}`, { headers: { Authorization: token }});
+export const getDashboard = (userId) => {
+    return axiosInstance.get(`/dashboard/${userId}`);
 };
 
 //TaskCalls

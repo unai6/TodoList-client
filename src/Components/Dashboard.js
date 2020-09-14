@@ -14,8 +14,7 @@ const Dashboard = (props) => {
     useEffect(() => {
         const getUserData = async () => {
           const result =  await getDashboard(props.match.params.userId)
-            setData(result.data.authorizedData.user);
-            setUserTasks(result.data.authorizedData.user.tasks)
+          console.log(result)
         };
 
         getUserData()
