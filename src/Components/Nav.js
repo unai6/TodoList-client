@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../CSS/dashboard.css'
 import { Redirect  } from "react-router-dom";
 
-const Nav = (props) => {
+const Nav = () => {
 
    
     const user= JSON.parse(localStorage.getItem('user'))

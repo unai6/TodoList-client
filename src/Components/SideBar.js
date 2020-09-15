@@ -5,7 +5,7 @@ import { slide as Menu } from "react-burger-menu";
 const SideBar = () => {
 
     const [menuOpen, setMenuOpen] = useState(true);
-    const user= JSON.parse(localStorage.getItem('user'))
+    // const user = JSON.parse(localStorage.getItem('user'))
     
 
 
