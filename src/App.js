@@ -7,7 +7,6 @@ export const App = (props) => {
   const [token] = useState(localStorage.getItem('token'));
   const [renderSideBar, setRenderSideBar] = useState(false);
 
-
   useEffect(() => {
     if (token) {
       setRenderSideBar(true)
@@ -17,16 +16,16 @@ export const App = (props) => {
 
 
   return (
-    <div style={{ display: "flex", flexDirection:'column' }} >
-    {
-      token ? <Nav /> : null
-    }
-      <div style={{ display: "flex"}}>
+    <div style={{ display: "flex", flexDirection: 'column' }} >
       {
-        token ? <SideBar /> : null
+        token ? <Nav /> : null
       }
+      <div style={{ display: "flex" }}>
+        {
+          token ? <SideBar /> : null
+        }
         <div>
-          <BrowserRoutes />
+          <BrowserRoutes/>
         </div>
       </div>
     </div>

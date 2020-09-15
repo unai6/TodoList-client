@@ -11,27 +11,26 @@ import { PrivateRoute } from "./PrivateRoute";
 import tokenAuth from '../config/token';
 
 
-export function BrowserRoutes() {
+export function BrowserRoutes(props) {
     const token = localStorage.getItem('token');
+
     if (token) tokenAuth(token)
 
     return (
         <Router>
             <AuthState>
-                <Switch>
-                
+                <Switch>              
                     <AnonRoute path="/" exact component={Home} />
                     <AnonRoute path="/signup" component={Signup} />
                     <AnonRoute path="/login" component={Login} />
                     <PrivateRoute path="/dashboard/:userId" component={Dashboard} />
                     <PrivateRoute path='/create-task/:userId' component={NewTask} />
                 </Switch>
-
-         
             </AuthState>
         </Router>
     )
 }
+/** */
 
 export default BrowserRoutes;
 
