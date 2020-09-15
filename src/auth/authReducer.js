@@ -2,10 +2,10 @@ import { LOGIN_SUCCESS, LOGIN_ERROR} from '../constants/index';
 
 export default (state, action) => {
 	switch(action.type) {
-
-		case LOGIN_SUCCESS:
-			localStorage.setItem('token', action.payload.token);
-            localStorage.setItem('user', JSON.stringify(action.payload.user));
+        case LOGIN_SUCCESS:
+  
+			localStorage.setItem('token', action.payload.data.token);
+            localStorage.setItem('user', JSON.stringify(action.payload.data.user));
         
 			return {
 				...state,
@@ -33,77 +33,3 @@ export default (state, action) => {
     
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* import { 
-  LOGIN_SUCCESS,
-  LOGIN_ERROR,
-  USER_REQUEST,
-  LOGOUT
-} from '../../constants';
-
-export default (state, action) => {
-  switch(action.type) {
-      case LOGIN_SUCCESS:
-          localStorage.setItem('token', action.payload.token);
-          return {
-              ...state,
-              auth: true,
-              loading: false
-          }
-      case USER_REQUEST: 
-          return {
-              ...state,
-              auth: true,
-              user: action.payload, 
-              loading: false
-          }
-      case LOGOUT:
-      case LOGIN_ERROR:
-          localStorage.removeItem('token');
-          return {
-              ...state,
-              token: null,
-              user: null,
-              auth: null,
-              message: action.payload, 
-              loading: false
-          }
-      
-      default:
-          return state;
-  }
-} */

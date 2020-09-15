@@ -10,14 +10,8 @@ export const Login = () => {
     // const [isLoading, setisLoading] = useState(true)
     // const [error, setError] = useState(false)
 
-    const onSubmit = async data => {
-        try {
-            await authenticate(data)
-            // setisLoading(false);
-                
-        } catch (error) {
-            console.log(error)
-        }
+    const onSubmit =  data => {
+         authenticate(data)  
     };
 
     return (
@@ -26,17 +20,19 @@ export const Login = () => {
                 <input
                     name='nickName'
                     type='text'
-                    ref={register}
+                    placeholder='NickName'
+                    ref={register({required :true})}
                 />
                    <input
                     name='password'
-                    type='text'
-                    ref={register}
+                    type='password'
+                    placeholder='password'
+                    ref={register({required :true})}
                 />
                    <input
                    type='checkbox'
                     name='remember'
-                    ref={register}
+                    ref={register}    
                 />
             <button>Acceder en mi cuenta</button>
             </form>

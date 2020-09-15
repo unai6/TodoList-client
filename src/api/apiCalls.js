@@ -10,14 +10,13 @@ export const login = (data) => {
     return axiosInstance.post('/login', data);
 };
 
-export const logout = () => {
-    return axiosInstance.post('/logout', {});
-
+export const getDashboard = (userId, token) => {
+    return axiosInstance.get(`/dashboard/${userId}`, { headers: { Authorization: token }});
 };
 
-export const getDashboard = (userId) => {
-    return axiosInstance.get(`/dashboard/${userId}`);
-};
+export const getUserData = (userId) => {
+    return axiosInstance.get(`/userinfo/${userId}`)
+}
 
 //TaskCalls
 

@@ -5,13 +5,12 @@ import {Link} from 'react-router-dom';
 export const Home = () => {
     
 
-    let token = localStorage.getItem('user');
+    let user = localStorage.getItem('user');
     let currentUserId;
 
-    if (token !== null) {
-      let parsedCurrentUserId = JSON.parse(token);
-      currentUserId = parsedCurrentUserId.userId;
-    
+    if (user !== null) {
+      currentUserId = JSON.parse(user)
+      
     }
 
     return (
@@ -19,9 +18,9 @@ export const Home = () => {
         <Link to='/signup' ><button>Registrarse</button></Link>
             <>
         {
-            token ?
+            user ?
 
-        <Link to={`/dashboard/${currentUserId}`} ><button>Ir a mi escritorio</button> </Link>
+        <Link to={`/dashboard/${currentUserId.userId}`} ><button>Ir a mi escritorio</button> </Link>
         
         :
         <Link to='/login' ><button>Iniciar Sesión</button> </Link>

@@ -1,7 +1,8 @@
 @media (min-width:320px)  and (max-width:768px){
     .background-home{
         background:orange;
-        height:100vh
+        height:100vh;
+        width: 100vw;
     }
 }
 

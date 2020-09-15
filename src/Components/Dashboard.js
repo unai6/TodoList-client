@@ -1,41 +1,30 @@
 import React , { useEffect, useState} from 'react';
-import SideBar from './SideBar';
 import '../CSS/dashboard.css'
-import { getDashboard } from '../api/apiCalls'
-import {logout} from '../api/apiCalls';
-import { useHistory } from "react-router-dom";
+import { getUserData } from '../api/apiCalls'
+// import { useHistory } from "react-router-dom";
 
 const Dashboard = (props) => {
  
-   const history = useHistory();
+//    const history = useHistory();
    const [data, setData] = useState('')
    const [userTasks, setUserTasks] = useState([])
    
     useEffect(() => {
-        const getUserData = async () => {
-          const result =  await getDashboard(props.match.params.userId)
-          console.log(result)
+        const getDashboard = async () => {
+          const result =  await getUserData(props.match.params.userId);
+          
+            setData(result.data);
+            setUserTasks(result.data.tasks)
         };
 
-        getUserData()
+        getDashboard()
     }, [props.match.params.userId]);
     
-    console.log(data.tasks)
-    const handleClickLogout = () => {
-        logout()
-        localStorage.removeItem('user');
-        localStorage.removeItem('token');
-        history.push('/');
-    
-      }
     
     return (
-        <div data-test='app-component'>
-            <div >
-                <img className='logo' src='/list-2389219_640-removebg-preview.png' alt='pic' data-test='image-logo' />
-                            <h2 className='h2-name'>Hola {data.nickName}</h2>
-                            <p className='p-title-tasks'>Estas son tus últimas tareas.</p>
-                            <div> {
+        <div  className='bg-component' data-test='app-component'>
+        
+                            <div className='div-tasks'> {
                                 userTasks.map((task, index) => {
                                     return (
                                         <div key={index}>
@@ -46,12 +35,8 @@ const Dashboard = (props) => {
                             }
                             </div>
                                 
-                            <SideBar {...props} data-test='sidebar-component'/>
+                            
             </div>
-            
-              
-        <button onClick={handleClickLogout}>Cerrar Sesión</button>
-        </div>
     )
 }
 
