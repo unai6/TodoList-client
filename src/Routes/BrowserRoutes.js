@@ -9,6 +9,7 @@ import { AuthState } from "../auth/authState";
 import { AnonRoute } from "./AnonRoute";
 import { PrivateRoute } from "./PrivateRoute";
 import tokenAuth from '../config/token';
+import AllTasks from "../Components/AllTasks";
 
 
 export function BrowserRoutes(props) {
@@ -25,6 +26,7 @@ export function BrowserRoutes(props) {
                     <AnonRoute path="/login" component={Login} />
                     <PrivateRoute path="/dashboard/:userId" component={Dashboard} />
                     <PrivateRoute path='/create-task/:userId' component={NewTask} />
+                    <PrivateRoute path='/:userId/alltasks' component={AllTasks}/>
                 </Switch>
             </AuthState>
         </Router>

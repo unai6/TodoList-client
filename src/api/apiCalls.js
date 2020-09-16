@@ -18,6 +18,10 @@ export const getUserData = (userId) => {
     return axiosInstance.get(`/userinfo/${userId}`)
 }
 
+export const getUserTasks = (userId) => {
+    return axiosInstance.get(`/${userId}/alltasks`)
+}
+
 //TaskCalls
 
 export const createTask = (id, data) => {

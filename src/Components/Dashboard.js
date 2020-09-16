@@ -13,16 +13,18 @@ const Dashboard = (props) => {
     const [, setData] = useState('')
     const [userTasks, setUserTasks] = useState([])
     const [activeItem, setActiveItem] = useState('');
-    const [category, setCategory] = useState(['Seleccionar', 'SuperMercado', 'Trabajo', 'Otros']);
     const [error, setError] = useState('')
-    const categoryMap = category.map(category => category);
     const [infoSent, setInfoSent] = useState(false);
-    const handleCategory = () => {setCategory(categoryMap)}
-
+    // const [category, setCategory] = useState(['Seleccionar', 'SuperMercado', 'Trabajo', 'Otros']);
+    // const categoryMap = category.map(category => category);
+    // const handleCategory = () => { setCategory(categoryMap) }
+    const [handler, setHandler] = useState(false);
 
     const hideModal = () => {
         setIsOpen(false);
     };
+
+    const handleTrueOrFalse = () => setHandler(!handler);
 
     const showModal = (task) => {
         setIsOpen(true);
@@ -36,20 +38,21 @@ const Dashboard = (props) => {
             setData(result.data);
             setUserTasks(result.data.tasks)
         };
-        
+
         getDashboard()
-    }, [props.match.params.userId, infoSent]);
-    
+    }, [props.match.params.userId]);
+
     const EditProfile = async (data) => {
-        try{
+        try {
             await editTask(props.match.params.userId, activeItem._id, data)
-            setInfoSent(true)
-        }catch(error){
+            setInfoSent(!infoSent)
+            document.location.reload()
+        } catch (error) {
             setError('Lo sentimos, No se puede actualizar esta tarea')
         }
-        
+
     }
-    
+
 
     return (
         <div className='bg-component' data-test='app-component'>
@@ -102,16 +105,24 @@ const Dashboard = (props) => {
                                 }
                                     <span className={
                                         task.completed === false ?
-                                            'text-danger' :
+                                            'text-danger taskBall-1' :
                                             task.completed === true ?
-                                                'text-success' :
+                                                'text-success taskBall-1' :
                                                 (task.category === 'Trabajo' || task.category === 'Supermercado') && !task.important === true ?
-                                                    'text-info' :
+                                                    'text-info taskBall-1' :
                                                     task.category && !task.importantes === 'Supermercado' ?
-                                                        'text-dark' :
+                                                        'text-dark taskBall-1' :
                                                         null
                                     }>
                                         {<i className="fas fa-circle ball-state"></i>}
+                                    </span>
+                                    
+                                    <span className={
+                                        task.important ?
+                                        'text-info' :
+                                        'text-dark'
+                                    }>
+                                    {<i className="fas fa-circle ball-state"></i>}
                                     </span>
                                 </div>
                                 <div>
@@ -124,54 +135,82 @@ const Dashboard = (props) => {
                 <div className='vertical-lign'></div>
             </div>
             {
-                activeItem ? 
-            <Modal show={isOpen} onHide={hideModal}>
-                <Modal.Body>
-                    <form onSubmit={handleSubmit(EditProfile)}>
-                    {errors.name && <span> {errors.name.message ? errors.name.message : 'Este campo es obligatorio'} </span>}
-                    <span>{error}</span>
-                    <input
-                        className='form-control'
-                        name='name'
-                        type='text'
-                        placeholder='Nombre'
-                        ref={register({ required: true })}
-                    />
-                        {errors.category && <span> {errors.category.message ? errors.nickName.message : 'Este campo es obligatorio'} </span>}
-          
-                    <div>
-                        <label>
-                            Categoría
-                            <select
-                                name='category'
-                                className='form-control'
-                                ref={register({ required: true })}
-                                onChange={e => handleCategory(e)}
-                            >
+                activeItem ?
+                    <Modal show={isOpen} onHide={hideModal}>
+                        <Modal.Body>
+                            <form onSubmit={handleSubmit(EditProfile)}>
+                                {errors.name && <span> {errors.name.message ? errors.name.message : 'Este campo es obligatorio'} </span>}
+                                <span>{error}</span>
+                                <label>Nombre</label>
+                                <input
+                                    defaultValue={activeItem.name}
+                                    className='form-control'
+                                    name='name'
+                                    type='text'
+                                    placeholder='Nombre'
+                                    ref={register}
+                                />
+                                {errors.category && <span> {errors.category.message ? errors.nickName.message : 'Este campo es obligatorio'} </span>}
+
+                                <div>
+                                    <label>
+                                        Categoría
+                                        <input
+                                            className='form-control'
+                                            type='text'
+                                            name='category'
+                                            defaultValue={activeItem.category}
+                                            ref={register}
+                                        />
+                                        {/* <select
+                                            name='category'
+                                            className='form-control'
+                                            ref={register({required:true})}
+                                            onChange={e => handleCategory(e)}
+                                        >
+                                            {
+                                                categoryMap.map((doc, key) => {
+                                                    return <option key={key} value={doc}>{doc}</option>;
+                                                })
+
+                                            }
+                                        </select> */}
+                                    </label>
+                                </div>
+                                {errors.description && <span> {errors.description.message ? errors.description.message : 'Este campo es obligatorio'} </span>}
+                                <label>Descripción</label>
+                                <input
+                                    className='form-control'
+                                    name='description'
+                                    type='text'
+                                    ref={register}
+                                    placeholder='Descripción'
+                                    defaultValue={activeItem.description}
+                                />
+
+
+                                <div className="switch-button">
+                                    <label>Estado de la tarea</label>
+                                    <input className="switch-button__checkbox" type="checkbox" id="switch-label" name="completed" onClick={handleTrueOrFalse} ref={register} />
+                                    <label htmlFor="switch-label" className="switch-button__label"></label>
+                                </div>
+                                <div className="switch-button">
+                                    <label>Marcar como importante</label>
+                                    <input className="switch-button__checkbox" type="checkbox" id="switch-label-2" name="important" onClick={handleTrueOrFalse} ref={register} />
+                                    <label htmlFor="switch-label-2" className="switch-button__label"></label>
+                                </div>
                                 {
-                                    categoryMap.map((doc, key) => {
-                                        return <option key={key} value={doc}>{doc}</option>;
-                                    })
-
+                                infoSent 
+                                ?
+                                    <p>¡Tarea Actualizada!</p>
+                                :
+                                    <button>Actualizar</button>
                                 }
-                            </select>
-                        </label>
-                    </div>
-                    {errors.description && <span> {errors.description.message ? errors.description.message : 'Este campo es obligatorio'} </span>}
-                    <input
-                        className='form-control'
-                        name='description'
-                        type='text'
-                        ref={register({ required: true })}
-                        placeholder='Descripción'
-                    />
-
-                    <button>Actualizar</button>
-                    </form>
-                </Modal.Body>
-            </Modal>
-            :
-            null
+                            </form>
+                        </Modal.Body>
+                    </Modal>
+                    :
+                    null
             }
         </div>
     )

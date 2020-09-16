@@ -28,20 +28,20 @@ const SideBar = () => {
                 <button onClick = {handleHome} onClickCapture={closeMenuHandler} className="menu-item  bm-item btn-handler">
                     INICIO
                 </button>
-                <button onClick={closeMenuHandler} className="menu-item  bm-item btn-handler">
-                    MIS TAREAS
+               <button onClick={closeMenuHandler} className="menu-item  bm-item btn-handler">
+               <a href={`/${user.userId}/alltasks`}> MIS TAREAS</a>
                 </button>
             
-                <button onClick={closeMenuHandler} className="menu-item  bm-item btn-handler">
+                <button onClick={closeMenuHandler} className="menu-item  bm-item btn-handler text-danger font-weight-bold">
                     PENDIENTES
                 </button>
-                <button onClick={closeMenuHandler} className="menu-item  bm-item btn-handler">
+                <button onClick={closeMenuHandler} className="menu-item  bm-item btn-handler text-success font-weight-bold">
                     COMPLETADAS
                         </button>
                 <button onClick={closeMenuHandler} className="menu-item  bm-item btn-handler">
                     SUPERMERCADO
                         </button>
-                <button onClick={closeMenuHandler} className="menu-item  bm-item btn-handler">
+                <button onClick={closeMenuHandler} className="menu-item  bm-item btn-handler text-info font-weight-bold">
                     IMPORTANTES
                 </button>
 

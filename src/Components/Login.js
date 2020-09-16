@@ -32,7 +32,6 @@ export const Login = () => {
                     ref={register({ required: true })}
                 />
                 <input
-                    className='form-control'
                     type='checkbox'
                     name='remember'
                     ref={register}
