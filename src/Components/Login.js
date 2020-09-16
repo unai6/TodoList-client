@@ -10,31 +10,34 @@ export const Login = () => {
     // const [isLoading, setisLoading] = useState(true)
     // const [error, setError] = useState(false)
 
-    const onSubmit =  data => {
-         authenticate(data)  
+    const onSubmit = data => {
+        authenticate(data)
     };
 
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <input
+                    className='form-control'
                     name='nickName'
                     type='text'
                     placeholder='NickName'
-                    ref={register({required :true})}
+                    ref={register({ required: true })}
                 />
-                   <input
+                <input
+                    className='form-control'
                     name='password'
                     type='password'
                     placeholder='password'
-                    ref={register({required :true})}
+                    ref={register({ required: true })}
                 />
-                   <input
-                   type='checkbox'
+                <input
+                    className='form-control'
+                    type='checkbox'
                     name='remember'
-                    ref={register}    
+                    ref={register}
                 />
-            <button>Acceder en mi cuenta</button>
+                <button>Acceder en mi cuenta</button>
             </form>
 
         </div>

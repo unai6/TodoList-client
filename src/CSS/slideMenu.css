@@ -1,6 +1,6 @@
 /*mobile*/
 /*DeskTop*/
-@media (min-width:320px) and (max-width:768px) {
+@media only screen and (min-device-width:320px) and (max-device-width:768px) and (orientation: portrait) {
 
 
   .bm-menu-wrap {
@@ -8,9 +8,9 @@
     right: inherit;
     z-index: 1100;
     width: 300px;
-    height: 80.2% !important;
+    height: 80.2vh !important;
     transition: all 0.5s ease 0s;
-    margin-top: 6em;
+    margin-top: 6.25em;
   }
 
   .userMenu .bm-menu {

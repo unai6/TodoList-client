@@ -28,6 +28,9 @@ const SideBar = () => {
                 <button onClick = {handleHome} onClickCapture={closeMenuHandler} className="menu-item  bm-item btn-handler">
                     INICIO
                 </button>
+                <button onClick={closeMenuHandler} className="menu-item  bm-item btn-handler">
+                    MIS TAREAS
+                </button>
             
                 <button onClick={closeMenuHandler} className="menu-item  bm-item btn-handler">
                     PENDIENTES
@@ -40,7 +43,7 @@ const SideBar = () => {
                         </button>
                 <button onClick={closeMenuHandler} className="menu-item  bm-item btn-handler">
                     IMPORTANTES
-                        </button>
+                </button>
 
             </Menu>
         </div>

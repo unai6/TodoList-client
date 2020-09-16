@@ -1,4 +1,4 @@
-@media (min-width:320px)  and (max-width:768px){
+@media only screen and (min-device-width:320px) and (max-device-width:768px) and (orientation: portrait) {
     .background-home{
         background:orange;
         height:100vh;

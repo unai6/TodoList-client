@@ -4,6 +4,12 @@ object-assign
 @license MIT
 */
 
+/*!
+  Copyright (c) 2017 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
 
@@ -18,6 +24,17 @@ LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
 OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
 ***************************************************************************** */
+
+/*! Moment Duration Format v2.2.2
+     *  https://github.com/jsmreese/moment-duration-format
+     *  Date: 2018-02-16
+     *
+     *  Duration format plugin function for the Moment.js library
+     *  http://momentjs.com/
+     *
+     *  Copyright 2018 John Madhavan-Reese
+     *  Released under the MIT license
+     */
 
 /** @license React v0.19.1
  * scheduler.production.min.js
@@ -54,3 +71,5 @@ PERFORMANCE OF THIS SOFTWARE.
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
+
+//! moment.js

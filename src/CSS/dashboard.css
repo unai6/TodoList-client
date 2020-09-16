@@ -1,4 +1,4 @@
-@media (min-width:320px) and (max-width:768px) {
+@media only screen and (min-device-width:320px) and (max-device-width:768px) and (orientation: portrait){
     .bg-component {
         background: #4399B5;
         width: 100vw;
@@ -10,8 +10,8 @@
         height: 6em !important;
         position: relative;
         width: 6em !important;
-        bottom: 1em;
-        left: .5em;
+        bottom: 2em;
+        left: 1.5em;
     }
 
     .h2-name {
@@ -42,7 +42,7 @@
         color: white;
         border-radius: 5px;
         position: relative;
-        top: .8em;
+        top: .6em;
     }
 
     .btn-create-task {
@@ -72,6 +72,8 @@
         margin-left: 1em;
         margin-right: 1em;
         border-radius: 5px;
+        font-size: 1.1em;
+        font-weight: 600;
     }
 
     .vertical-lign{
@@ -79,9 +81,16 @@
         top: 0px;
         bottom: 0px;
         border: 1px solid #40B7AD;
-        left: 17em;
+        left: 10em;
         margin-top: 1em;
         margin-bottom: 1em;
+    }
+    .tasks-headers{
+        color:#FF6712
+    }
+
+    .date{
+        color: #00526C;
     }
 
 }
