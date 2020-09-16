@@ -29,12 +29,18 @@ const Dashboard = ( props ) => {
             <div className='div-tasks'> {
                 userTasks.map((task, index) => {
                     return (
+                        <div className='d-flex justify-content-around'>
                         <div key={index}>
-                            <p>{task.name}</p>
+                            <span>{task.name}</span>
+                        </div>
+                        <div key={index}>
+                            <span>{task.createdAt}</span>
+                        </div>
                         </div>
                     )
                 })
             }
+            <div className='vertical-lign'></div>
             </div>
       
         </div>
