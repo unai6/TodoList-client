@@ -3,6 +3,15 @@
 @media (min-width:320px) and (max-width:768px) {
 
 
+  .bm-menu-wrap {
+    position: absolute !important;
+    right: inherit;
+    z-index: 1100;
+    width: 300px;
+    height: 80% !important;
+    transition: all 0.5s ease 0s;
+    margin-top: 6em;
+  }
 
   .userMenu .bm-menu {
     padding: 2.5em 0;
@@ -12,8 +21,8 @@
     width: 13em !important;
     transition: all 0.5s ease 0s;
     height: 100vh;
-    top: 4em !important;
-    position: absolute;
+    top: 7.5em !important;
+    overflow: hidden !important;
   }
 
   .bm-overlay {
@@ -21,19 +30,21 @@
   }
 
   .bm-burger-button {
-    position: fixed;
+
+    position: absolute;
     width: 36px;
     height: 30px;
     left: 36px;
-    top: 36px;
+    top: 11.5em;
+
   }
 
   .bm-burger-button > button {
     position: absolute;
     left: 0px;
     top: 0px;
-    width: 15vw !important;
-    height: 10vh !important;
+    width: 32vw !important;
+    height: 11vh !important;
     margin: 0px;
     padding: 0px;
     border: none;
@@ -53,9 +64,32 @@
     font-weight: 600;
     line-height: 4.5em;
     position: relative;
-    right: 4em;
-
+    right:3em;
+    margin-top: 1.5em;
+    
   }
+
+  .menu-item{
+    outline:none !important
+  }
+
+  .bm-cross-button{
+    position: absolute;
+    left: 5.5em;
+    top: 1em !important;
+    z-index: 2000;
+    font-size: 1.4em;
+  }
+  .bm-cross-button:after {
+    
+    font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f00d";
+    color:#237c75;
+  }
+  
+  .bm-cross-button > button {
+    outline:none !important
+  }
+
 
   .slide-right {
     -webkit-animation: slide-right 1s cubic-bezier(0.250, 0.460, 0.450, 0.940)linear both;

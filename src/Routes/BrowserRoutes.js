@@ -30,7 +30,7 @@ export function BrowserRoutes(props) {
         </Router>
     )
 }
-/** */
+
 
 export default BrowserRoutes;
 

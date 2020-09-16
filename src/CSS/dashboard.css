@@ -1,14 +1,17 @@
 @media (min-width:320px) and (max-width:768px) {
     .bg-component {
-        background: #4399B5
+        background: #4399B5;
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
     }
 
     .logo {
         height: 6em !important;
         position: relative;
-        right: 1.5em;
-        bottom: 1.5em;
         width: 6em !important;
+        bottom: 1em;
+        left: .5em;
     }
 
     .h2-name {
@@ -27,7 +30,9 @@
         border: none;
         background: transparent;
         font-size: 1.1em;
-        outline:none !important;
+        outline: none !important;
+        color: #40B7AD;
+        font-weight: 600;
     }
 
     .btn-categories {
@@ -35,11 +40,38 @@
         border: none;
         padding: 1em;
         color: white;
-        border-radius: 5px
+        border-radius: 5px;
+        position: relative;
+        top: 3em;
+    }
+
+    .btn-create-task {
+        background: #E16F2C;
+        border: none;
+        padding: 1em;
+        color: white;
+        border-radius: 5px;
+        position: relative;
+        left: 13em;
+        top: 1.3em;
+        height: 3.3em;
+        outline: none;
+    
     }
 
     .dashboard {
         background: white
+    }
+
+    .div-tasks {
+        background: white;
+        position: relative;
+        top: 2.75em;
+        min-height: 80vh;
+        padding: 1em;
+        margin-left: 1em;
+        margin-right: 1em;
+        border-radius: 5px;
     }
 
 }
