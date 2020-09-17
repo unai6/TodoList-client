@@ -38,7 +38,7 @@ const SideBar = () => {
                 <button onClick={closeMenuHandler} className="menu-item  bm-item btn-handler text-success font-weight-bold">
                 <a className='text-success ' href={`/${user.userId}/completedTasks`}> COMPLETADAS </a>
                 </button>
-                <button onClick={closeMenuHandler} className="menu-item  bm-item btn-handler text-info font-weight-bold">
+                <button onClick={closeMenuHandler} className="menu-item  bm-item btn-handler text-warning font-weight-bold">
                     IMPORTANTES
                 </button>
                 <button onClick={closeMenuHandler} className="menu-item  bm-item btn-handler">
