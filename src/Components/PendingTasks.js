@@ -18,13 +18,13 @@ const PendingTasks = (props) => {
     // const [category, setCategory] = useState(['Seleccionar', 'SuperMercado', 'Trabajo', 'Otros']);
     // const categoryMap = category.map(category => category);
     // const handleCategory = () => { setCategory(categoryMap) }
-    const [handler, setHandler] = useState(false);
+    const [handler, setHandler] = useState(activeItem);
 
     const hideModal = () => {
         setIsOpen(false);
     };
 
-    const handleTrueOrFalse = () => setHandler(!handler);
+    const handleTrueOrFalse = () => setHandler(!activeItem);
 
     const showModal = (task) => {
         setIsOpen(true);

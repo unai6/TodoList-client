@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import '../CSS/dashboard.css'
-import { getUserData, editTask } from '../api/apiCalls';
+import { getUserTasks, editTask } from '../api/apiCalls';
 import { Link } from 'react-router-dom'
 import Moment from 'react-moment';
 import Modal from "react-bootstrap/Modal";
 import { useForm } from "react-hook-form";
 
-const Dashboard = (props) => {
+const ImportantTasks = (props) => {
 
     const { register, handleSubmit, errors } = useForm();
     const [isOpen, setIsOpen] = useState(false);
@@ -34,13 +34,14 @@ const Dashboard = (props) => {
 
     useEffect(() => {
         const getDashboard = async () => {
-            const result = await getUserData(props.match.params.userId);
+            const result = await getUserTasks(props.match.params.userId);
             setData(result.data);
             setUserTasks(result.data.tasks)
         };
 
         getDashboard()
     }, [props.match.params.userId]);
+
 
     const EditProfile = async (data) => {
         try {
@@ -59,7 +60,7 @@ const Dashboard = (props) => {
             <Link to={`/create-task/${props.match.params.userId}`}><button className='btn-create-task'> + NUEVA TAREA</button></Link>
             <div className='div-tasks'>
                 <div className='d-flex justify-content-between mb-3'>
-                    <span className='tasks-headers'>ÚLTIMAS TAREAS</span>
+                    <span className='tasks-headers'>TAREAS IMPORTANTES</span>
                     <span className='tasks-headers'>FECHA DE CREACIÓN</span>
                 </div>
                 {
@@ -68,65 +69,49 @@ const Dashboard = (props) => {
 
                         return (
                             <div key={index} className='d-flex justify-content-between'>
-                                <div className='task-name p-2' onClick={() => showModal(task)} > {
-                                    task.completed ?
-                                        <del>
-                                            <span className=
-                                                {
-                                                    !task.completed ?
-                                                        'text-danger' :
-                                                        task.completed ?
-                                                            'text-success' :
-                                                            (task.category === 'Trabajo' || task.category === 'Supermercado') && task.important && !task.completed ?
-                                                                'text-info' :
-                                                                task.category && !task.important && !task.completed === 'Supermercado' ?
-                                                                    'text-dark' :
-                                                                    null
-                                                }>
-                                                {task.name}
-                                            </span>
-                                        </del>
-                                        :
-                                        <span className=
-                                            {
-                                                !task.completed  ?
-                                                    'text-danger' :
+
+                                {
+                                    task.important ?
+
+                                        <>
+                                            <div className='task-name p-2' onClick={() => showModal(task)} >
+
+                                                <span className=
+                                                    {
+                                                        task.important ?
+                                                            'text-warning'
+                                                            :
+                                                            null
+                                                    }>
+                                                    {task.name}
+                                                </span>
+
+                                                <span className={
                                                     task.completed ?
-                                                        'text-success' :
-                                                        (task.category === 'Trabajo' || task.category === 'Supermercado') && !task.important ?
-                                                            'text-info' :
-                                                            task.category && !task.importantes === 'Supermercado' ?
-                                                                'text-dark' :
+                                                        'text-success taskBall-1' :
+                                                             !task.completed ?
+                                                                'text-danger taskBall-1' :
                                                                 null
-                                            }>
-                                            {task.name}
-                                        </span>
+                                                }>
+                                                    {task.important ? <i className="fas fa-circle ball-state"></i> : null}
+                                                </span>
+
+                                                <span className={
+                                                    task.important ?
+                                                        'text-warning' :
+                                                        'text-dark'
+                                                }>
+                                                    {task.important ? <i className="fas fa-circle ball-state"></i> : null}
+                                                </span>
+                                            </div>
+                                            <div>
+                                                <span className='date'><Moment format="D MMM YYYY">{task.createdAt}</Moment></span>
+                                            </div>
+                                        </>
+                                        :
+                                        null
                                 }
-                                    <span className={
-                                        !task.completed  ?
-                                            'text-danger taskBall-1' :
-                                            task.completed ?
-                                                'text-success taskBall-1' :
-                                                (task.category === 'Trabajo' || task.category === 'Supermercado' || task.category === 'Otros') && !task.important ?
-                                                    'text-warning taskBall-1' :
-                                                    task.category && !task.important === 'Supermercado' ?
-                                                        'text-dark taskBall-1' :
-                                                        null
-                                    }>
-                                        {<i className="fas fa-circle ball-state"></i>}
-                                    </span>
-                                    
-                                    <span className={
-                                        task.important ?
-                                        'text-warning' :
-                                        'text-dark'
-                                    }>
-                                    {<i className="fas fa-circle ball-state"></i>}
-                                    </span>
-                                </div>
-                                <div>
-                                    <span className='date'><Moment format="D MMM YYYY">{task.createdAt}</Moment></span>
-                                </div>
+
                             </div>
                         )
                     })
@@ -195,15 +180,15 @@ const Dashboard = (props) => {
                                 </div>
                                 <div className="switch-button">
                                     <label>Marcar como importante</label>
-                                    <input  className="switch-button__checkbox" type="checkbox" id="switch-label-2" name="important" onClick={handleTrueOrFalse} ref={register} />
+                                    <input className="switch-button__checkbox" type="checkbox" id="switch-label-2" name="important" onClick={handleTrueOrFalse} ref={register} />
                                     <label htmlFor="switch-label-2" className="switch-button__label"></label>
                                 </div>
                                 {
-                                infoSent 
-                                ?
-                                    <p>¡Tarea Actualizada!</p>
-                                :
-                                    <button>Actualizar</button>
+                                    infoSent
+                                        ?
+                                        <p>¡Tarea Actualizada!</p>
+                                        :
+                                        <button>Actualizar</button>
                                 }
                             </form>
                         </Modal.Body>
@@ -215,4 +200,4 @@ const Dashboard = (props) => {
     )
 }
 
-export default Dashboard
+export default ImportantTasks

@@ -83,7 +83,7 @@ const CompletedTasks = (props) => {
                                                             :
                                                             null
                                                     }>
-                                                   <del>{task.name}</del> 
+                                                    <del>{task.name}</del>
                                                 </span>
 
                                                 <span className={

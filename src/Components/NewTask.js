@@ -5,22 +5,22 @@ import '../CSS/create-task.css';
 import { createTask } from '../api/apiCalls';
 // import Select from 'react-select';
 
-export const NewTask = () => {
+export const NewTask = (props) => {
+
     const history = useHistory();
     const { register, handleSubmit, errors } = useForm();
     const [, setisLoading] = useState(true)
     const [error, setError] = useState('')
     const [category, setCategory] = useState(['Seleccionar', 'SuperMercado', 'Trabajo', 'Otros']);
-    const user = JSON.parse(localStorage.getItem('user'));
     const categoryMap = category.map(category => category);
 
     const handleCategory = () => {setCategory(categoryMap)}
 
     const onSubmit = async data => {
         try {
-            await createTask(user.userId, data);
+            await createTask(props.match.params.userId, data);
             setisLoading(false);
-            history.push(`/dashboard/${user.userId}`)
+            history.push(`/dashboard/${props.match.params.userId.userId}`)
 
         } catch (error) {
             setError('ya existe un usuario con ese avatar')

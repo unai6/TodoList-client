@@ -3,7 +3,7 @@ import '../CSS/slideMenu.css';
 import { slide as Menu } from "react-burger-menu";
 import { Link } from "react-router-dom";
 
-const SideBar = () => {
+const SideBar = (props) => {
 
     const [menuOpen, setMenuOpen] = useState(true);
     const user = JSON.parse(localStorage.getItem('user'))
@@ -37,7 +37,7 @@ const SideBar = () => {
                 <Link onClick={closeMenuHandler} className="menu-item  bm-item btn-handler text-success font-weight-bold" to={`/${user.userId}/completedTasks`}>
                     COMPLETADAS
                 </Link>
-                <Link onClick={closeMenuHandler} className="menu-item  bm-item btn-handler text-warning font-weight-bold" to={`/${user.userId}/completedTasks`}>
+                <Link onClick={closeMenuHandler} className="menu-item  bm-item btn-handler text-warning font-weight-bold" to={`/${user.userId}/importantTasks`}>
                     IMPORTANTES
                 </Link>
                 <Link onClick={closeMenuHandler} className="menu-item  bm-item btn-handler text-light font-weight-bold" to={`/${user.userId}/completedTasks`}>

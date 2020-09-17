@@ -14,10 +14,10 @@ import PendingTasks from "../Components/PendingTasks";
 import CompletedTasks from "../Components/CompletedTasks";
 import Nav from '../Components/Nav'
 import SideBar from '../Components/SideBar';
+import ImportantTasks from "../Components/ImportantTasks";
 
 export function BrowserRoutes() {
     const token = localStorage.getItem('token');
-
     if (token) tokenAuth(token)
 
     return (
@@ -43,6 +43,7 @@ export function BrowserRoutes() {
                                 <PrivateRoute path='/:userId/alltasks' component={AllTasks} />
                                 <PrivateRoute path='/:userId/pendingTasks' component={PendingTasks} />
                                 <PrivateRoute path='/:userId/completedTasks' component={CompletedTasks} />
+                                <PrivateRoute path='/:userId/importantTasks' component={ImportantTasks}/>
                             </Switch>
                         </div>
                     </div>
