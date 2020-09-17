@@ -12,9 +12,10 @@ import tokenAuth from '../config/token';
 import AllTasks from "../Components/AllTasks";
 import PendingTasks from "../Components/PendingTasks";
 import CompletedTasks from "../Components/CompletedTasks";
+import Nav from '../Components/Nav'
+import SideBar from '../Components/SideBar';
 
-
-export function BrowserRoutes(props) {
+export function BrowserRoutes() {
     const token = localStorage.getItem('token');
 
     if (token) tokenAuth(token)
@@ -22,63 +23,34 @@ export function BrowserRoutes(props) {
     return (
         <Router>
             <AuthState>
-                <Switch>              
-                    <AnonRoute path="/" exact component={Home} />
-                    <AnonRoute path="/signup" component={Signup} />
-                    <AnonRoute path="/login" component={Login} />
-                    <PrivateRoute path="/dashboard/:userId" component={Dashboard} />
-                    <PrivateRoute path='/create-task/:userId' component={NewTask} />
-                    <PrivateRoute path='/:userId/alltasks' component={AllTasks}/>
-                    <PrivateRoute path='/:userId/pendingTasks' component={PendingTasks}/>
-                    <PrivateRoute path='/:userId/completedTasks' component={CompletedTasks}/>
-                </Switch>
+                <div className='flex-container'>
+                    {
+                        token ? <Nav /> : null
+                    }
+                    <div>
+
+                        {
+                            token ? <SideBar /> : null
+                        }
+                        <div>
+
+                            <Switch>
+                                <AnonRoute path="/" exact component={Home} />
+                                <AnonRoute path="/signup" component={Signup} />
+                                <AnonRoute path="/login" component={Login} />
+                                <PrivateRoute path="/dashboard/:userId" component={Dashboard} />
+                                <PrivateRoute path='/create-task/:userId' component={NewTask} />
+                                <PrivateRoute path='/:userId/alltasks' component={AllTasks} />
+                                <PrivateRoute path='/:userId/pendingTasks' component={PendingTasks} />
+                                <PrivateRoute path='/:userId/completedTasks' component={CompletedTasks} />
+                            </Switch>
+                        </div>
+                    </div>
+                </div>
             </AuthState>
         </Router>
     )
 }
 
-
 export default BrowserRoutes;
 
-
-
-
-
-// import SideBar from '../Components/SideBar'
-
-// const routes = [
-
-//     {
-//         path: "/",
-//         component: Home,
-//         exact: true,
-
-//     },
-
-//     {
-//         path: "/login",
-//         component: Login,
-//         exact: true,
-
-//     },
-//     {
-//         path: "/signup",
-//         component: Signup,
-//         exact: true,
-
-//     },
-//     {
-//         path: "/dashboard/:userId",
-//         component: Dashboard,
-//         exact: true,
-
-//     },
-//     {
-//         path: "/create-task/:userId",
-//         component: NewTask,
-//         exact: true,
-
-//     },
-// ];
-
-// export default routes

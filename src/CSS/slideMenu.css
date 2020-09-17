@@ -55,16 +55,13 @@
   }
   
   .bm-item {
-
     font-size: 1.2em;
     background: transparent;
     border: none;
-    width: 16em;
     color: white;
     font-weight: 600;
     line-height: 3.5em;
-    position: relative;
-    right:3em;
+    text-align: center;
     margin-top: 1.5em;
     
   }
