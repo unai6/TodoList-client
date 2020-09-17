@@ -71,14 +71,14 @@ const ImportantTasks = (props) => {
                             <div key={index} className='d-flex justify-content-between'>
 
                                 {
-                                    task.important ?
+                                    task.important && !task.completed ?
 
                                         <>
                                             <div className='task-name p-2' onClick={() => showModal(task)} >
 
                                                 <span className=
                                                     {
-                                                        task.important ?
+                                                        task.important && !task.completed?
                                                             'text-warning'
                                                             :
                                                             null
@@ -87,13 +87,11 @@ const ImportantTasks = (props) => {
                                                 </span>
 
                                                 <span className={
-                                                    task.completed ?
-                                                        'text-success taskBall-1' :
                                                              !task.completed ?
                                                                 'text-danger taskBall-1' :
                                                                 null
                                                 }>
-                                                    {task.important ? <i className="fas fa-circle ball-state"></i> : null}
+                                                    {task.important && !task.completed ? <i className="fas fa-circle ball-state"></i> : null}
                                                 </span>
 
                                                 <span className={
