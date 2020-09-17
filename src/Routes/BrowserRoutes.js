@@ -10,6 +10,8 @@ import { AnonRoute } from "./AnonRoute";
 import { PrivateRoute } from "./PrivateRoute";
 import tokenAuth from '../config/token';
 import AllTasks from "../Components/AllTasks";
+import PendingTasks from "../Components/PendingTasks";
+import CompletedTasks from "../Components/CompletedTasks";
 
 
 export function BrowserRoutes(props) {
@@ -27,6 +29,8 @@ export function BrowserRoutes(props) {
                     <PrivateRoute path="/dashboard/:userId" component={Dashboard} />
                     <PrivateRoute path='/create-task/:userId' component={NewTask} />
                     <PrivateRoute path='/:userId/alltasks' component={AllTasks}/>
+                    <PrivateRoute path='/:userId/pendingTasks' component={PendingTasks}/>
+                    <PrivateRoute path='/:userId/completedTasks' component={CompletedTasks}/>
                 </Switch>
             </AuthState>
         </Router>

@@ -29,20 +29,23 @@ const SideBar = () => {
                     INICIO
                 </button>
                <button onClick={closeMenuHandler} className="menu-item  bm-item btn-handler">
-               <a href={`/${user.userId}/alltasks`}> MIS TAREAS</a>
+               <a className='text-light' href={`/${user.userId}/alltasks`}> MIS TAREAS</a>
                 </button>
             
                 <button onClick={closeMenuHandler} className="menu-item  bm-item btn-handler text-danger font-weight-bold">
-                    PENDIENTES
+                <a className='text-danger ' href={`/${user.userId}/pendingTasks`}> PENDIENTES </a>
                 </button>
                 <button onClick={closeMenuHandler} className="menu-item  bm-item btn-handler text-success font-weight-bold">
-                    COMPLETADAS
-                        </button>
-                <button onClick={closeMenuHandler} className="menu-item  bm-item btn-handler">
-                    SUPERMERCADO
-                        </button>
+                <a className='text-success ' href={`/${user.userId}/completedTasks`}> COMPLETADAS </a>
+                </button>
                 <button onClick={closeMenuHandler} className="menu-item  bm-item btn-handler text-info font-weight-bold">
                     IMPORTANTES
+                </button>
+                <button onClick={closeMenuHandler} className="menu-item  bm-item btn-handler">
+                    TRABAJO
+                </button>
+                <button onClick={closeMenuHandler} className="menu-item  bm-item btn-handler">
+                    SUPERMERCADO
                 </button>
 
             </Menu>
