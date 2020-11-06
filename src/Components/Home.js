@@ -3,7 +3,7 @@ import '../CSS/home.css';
 import { Link } from 'react-router-dom';
 import { signUpWithGoogle } from '../api/apiCalls';
 import { GoogleLogin } from 'react-google-login';
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 export const Home = () => {
     const history = useHistory()
@@ -18,11 +18,10 @@ export const Home = () => {
 
     const responseGoogle = async (data) => {
         try {
-            const result = await signUpWithGoogle(data)
-            console.log(result)
-            if(!result) {
-                history.push('/login')
-            }
+            const result = await signUpWithGoogle(data);
+             history.push(`/dashboard/${result.data.user._id}`)
+           
+
         } catch (error) {
             console.log(error)
         }
