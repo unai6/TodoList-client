@@ -2,6 +2,10 @@ import {axiosInstance} from './api'
 
 //userCalls
 
+export const signUpWithGoogle = (data) => {
+    return axiosInstance.post('/google-signup', data)
+}
+
 export const signup = (data) => {
     return axiosInstance.post('/signup', data);
 };

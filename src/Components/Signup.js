@@ -33,6 +33,16 @@ export const Signup = () => {
                     placeholder='Nombre'
                     ref={register({ required: true })}
                 />
+                {errors.email && <span className='text-danger'> {errors.email.message ? errors.email.message : 'Este campo es obligatorio'} </span>}
+
+                <input
+                    type="text"
+                    name="email"
+                    placeholder='email'
+                    className={errors.email ? 'form-control signup-fields mx-auto border-danger' : 'form-control signup-fields mx-auto'}
+                    ref={register({
+                        required: true, pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, message: 'La dirección no es válida' }
+                    })} />
                 {errors.nickName && <span> {errors.nickName.message ? errors.nickName.message : 'Este campo es obligatorio'} </span>}
                 <input
                     className='form-control'
