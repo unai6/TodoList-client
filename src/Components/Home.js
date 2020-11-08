@@ -33,27 +33,27 @@ export const Home = () => {
 
 
     return (
-        <div className='background-home'>
-            <Link to='/signup' ><button>Registrarse</button></Link>
-            <GoogleLogin
-                clientId={CLIENT_ID}
-                buttonText="Login with Google"
-                onSuccess={responseGoogle}
-                onFailure={responseGoogle}
-                redirectUri={'https://todo.unaigo.com'}
-
-            />
+        <div className='background-home d-flex flex-column justify-content-center w-50 mx-auto'>
+            <Link to='/signup' ><button className='btn btn-info p-2 mb-3'>Registrarse</button></Link>
             <>
                 {
                     user ?
 
-                        <Link to={`/dashboard/${currentUserId.userId}`} ><button>Ir a mi escritorio</button> </Link>
+                        <Link to={`/dashboard/${currentUserId.userId}`} ><button className='btn btn-info p-2 mb-3'>Ir a mi escritorio</button> </Link>
 
                         :
-                        <Link to='/login' ><button>Iniciar Sesión</button> </Link>
+                        <Link to='/login' ><button className='btn btn-info p-2 mb-3'>Iniciar Sesión</button> </Link>
 
                 }
             </>
+            <GoogleLogin
+                clientId={CLIENT_ID}
+                buttonText="Signup with Google"
+                onSuccess={responseGoogle}
+                onFailure={responseGoogle}
+                redirectUri={'https://todo.unaigo.com'}
+                className='w-100 text-center'
+            />
 
         </div>
     )
