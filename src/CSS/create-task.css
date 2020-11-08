@@ -12,6 +12,11 @@
         font-size: 1.1em;
         font-weight: 600;
     }
+    .h4-newTask{
+        text-align: center;
+        color: #4399B5;
+        padding-top: .2em;
+    }
 
     .ball-state{
         position: absolute;
@@ -62,3 +67,24 @@
         transform: translateX(1rem);
     }
 }
+
+@media (min-width:1024px) {
+    .form-newTask{
+    display: block;
+    margin: auto;
+    width: 50%;
+    bottom: 50%;
+    position: absolute;
+    left: 50%;
+    line-height: 2.3em;
+    transform: translate(-50%, 0%);
+    }
+
+    .h4-newTask{
+        text-align: center;
+        color: white;
+        padding-top: 2em;
+    
+    }
+}
+

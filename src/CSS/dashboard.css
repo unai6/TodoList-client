@@ -96,9 +96,122 @@
 }
 
 @media (min-width:1024px) {
+    .bg-component {
+        background: #4399B5;
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+    }
+
     .logo {
-        height: 10em;
-        margin-left: 4em;
-        margin-top: 3em
+        height: 6em !important;
+        position: relative;
+        width: 6em !important;
+        bottom: 2em;
+        left: 1.5em;
+    }
+    .nav-div{
+        height: 3em;
+    }
+
+    .h2-name {
+        margin-right: 2em;
+        color: #E16F2C;
+        position: relative;
+        bottom: 2.4em;
+        left: 61em;
+        font-size: 1.3em;
+    }
+
+    .p-title-tasks {
+        float: right;
+        position: relative;
+        right: 3.5em;
+    }
+
+    .btn-logout {
+        border: none;
+        background: transparent;
+        font-size: 1.1em;
+        outline: none !important;
+        color: #40B7AD;
+        font-weight: 600;
+    }
+
+    .btn-categories {
+        background: #E16F2C;
+        border: none;
+        padding: 1em;
+        color: white;
+        border-radius: 5px;
+        position: relative;
+        bottom: 5.6em;
+    }
+
+    .btn-create-task {
+        background: #E16F2C;
+        border: none;
+        padding: 1em;
+        color: white;
+        border-radius: 5px;
+        position: relative;
+        left: 13em;
+        top: 1.3em;
+        height: 3.3em;
+        outline: none;
+        z-index: 2000;
+    
+    }
+
+    .btn-newTask-short{
+        background: #E16F2C;
+        color: white;
+        border: none;
+        margin-top: 1em !important;
+        border-radius: 5px;
+        display: block;
+        margin: auto;
+        padding-right: 1em;
+        padding-left: 1em;
+        padding-top: .5em;
+        padding-bottom: .5em;
+    }
+
+    .dashboard {
+        background: white
+    }
+
+    .div-tasks {
+        background: white;
+        position: relative;
+        top: 2.75em;
+        min-height: 80vh;
+        padding: 1em;
+        margin-left: 1em;
+        margin-right: 1em;
+        border-radius: 5px;
+        font-size: 1.1em;
+        font-weight: 600;
+    }
+
+    .vertical-lign{
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        border: 1px solid #40B7AD;
+        left: 50%;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+    .tasks-headers{
+        color:#FF6712
+    }
+
+    .date{
+        color: #00526C;
+    }
+    .taskBall-1{
+        margin-left:3em;
+        padding-right: .5em;
     }
 }

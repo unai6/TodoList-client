@@ -11,27 +11,31 @@ export const NewTask = (props) => {
     const { register, handleSubmit, errors } = useForm();
     const [, setisLoading] = useState(true)
     const [error, setError] = useState('')
-    const [category, setCategory] = useState(['Seleccionar', 'SuperMercado', 'Trabajo', 'Otros']);
-    const categoryMap = category.map(category => category);
+    const category = [ 'SuperMercado', 'Trabajo', 'Otros'];
+    const categoryMap = category.map((doc, key) => { return <option key={key} value={doc}>{doc}</option>});
 
-    const handleCategory = () => {setCategory(categoryMap)}
+
 
     const onSubmit = async data => {
         try {
             await createTask(props.match.params.userId, data);
             setisLoading(false);
-            history.push(`/dashboard/${props.match.params.userId.userId}`)
+            history.push(`/dashboard/${props.match.params.userId}`)
+
 
         } catch (error) {
             setError('ya existe un usuario con ese avatar')
         }
     };
 
+
+
     return (
         <div className='bg-component'>
             <div className='div-createTask'>
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    {errors.name && <span> {errors.name.message ? errors.name.message : 'Este campo es obligatorio'} </span>}
+            <h4 className='h4-newTask'>Crea tu nueva tarea</h4>
+                <form className='form-newTask' onSubmit={handleSubmit(onSubmit)}>
+                    {errors.name && <span className='text-danger'> Este campo es obligatorio </span>}
                     <span>{error}</span>
                     <input
                         className='form-control'
@@ -40,27 +44,22 @@ export const NewTask = (props) => {
                         placeholder='Nombre'
                         ref={register({ required: true })}
                     />
-                        {errors.category && <span> {errors.category.message ? errors.nickName.message : 'Este campo es obligatorio'} </span>}
+                        {errors.category && <span className='text-danger'>Este campo es obligatorio </span>}
           
                     <div>
-                        <label>
-                            Categoría
+                        <label className='text-white'>
+                            <b>Categoría</b>
                             <select
                                 name='category'
                                 className='form-control'
                                 ref={register({ required: true })}
-                                onChange={e => handleCategory(e)}
-                            >
-                                {
-                                    categoryMap.map((doc, key) => {
-                                        return <option key={key} value={doc}>{doc}</option>;
-                                    })
-
-                                }
+                            >   
+                            <option value=''>Seleccionar</option>
+                                {categoryMap}
                             </select>
                         </label>
                     </div>
-                    {errors.description && <span> {errors.description.message ? errors.description.message : 'Este campo es obligatorio'} </span>}
+                    {errors.description && <span className='text-danger'> Este campo es obligatorio </span>}
                     <input
                         className='form-control'
                         name='description'
@@ -69,7 +68,7 @@ export const NewTask = (props) => {
                         placeholder='Descripción'
                     />
 
-                    <button>Crear tarea</button>
+                    <button className='btn-newTask-short'>Crear tarea</button>
                 </form>
             </div>
 

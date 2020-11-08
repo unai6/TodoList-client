@@ -1,5 +1,4 @@
 /*mobile*/
-/*DeskTop*/
 @media only screen and (min-device-width:320px) and (max-device-width:768px) and (orientation: portrait) {
 
 
@@ -14,7 +13,7 @@
   }
 
   .userMenu .bm-menu {
-    padding: 2.5em 0;
+    padding: 6.5em 0;
     font-size: .8em;
     background: #E16F2C;
     z-index: 1100;
@@ -156,39 +155,87 @@
 @media (min-width:1024px) {
 
 
-  .userMenu {
-    position: absolute;
-    padding: 2.5em 0;
+  .bm-menu-wrap {
+    right: inherit;
+    z-index: 1100;
+    transition: all 0.5s ease 0s;
+    bottom: 0em;
+  }
+
+  .userMenu .bm-menu {
+    padding: 10.5em 0;
     font-size: .8em;
     background: #E16F2C;
-    position: fixed;
     z-index: 1100;
-    width: 17em;
-    height: 100vh;
+    width: 13em !important;
     transition: all 0.5s ease 0s;
-    top: 0
+    height: 100vh;
+    top: 7.5em !important;
+    overflow: hidden !important;
   }
 
-  .bm-icon {
-    font-size: 2.5em;
-    position: relative;
-    margin-left: 4em;
-    color: white
+  .bm-overlay {
+    background: transparent !important;
   }
 
+  .bm-burger-button {
+
+    position: absolute;
+    width: 36px;
+    height: 30px;
+    left: 36px;
+    top: 11.5em;
+
+  }
+
+  .bm-burger-button > button {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 32vw !important;
+    height: 11vh !important;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    font-size: 0px;
+    background: transparent;
+    cursor: pointer;
+    outline: none;
+  }
+  
   .bm-item {
-
     font-size: 1.2em;
     background: transparent;
     border: none;
-    width: 16em;
     color: white;
     font-weight: 600;
-    line-height: 4.5em;
-    position: relative;
-    right: 4em;
-    width: 100%;
+    line-height: 3.5em;
+    text-align: center;
+    margin-top: 1.5em;
+    
   }
+
+  .menu-item{
+    outline:none !important
+  }
+
+  .bm-cross-button{
+    position: absolute;
+    left: 5.5em;
+    top: 1em !important;
+    z-index: 2000;
+    font-size: 1.4em;
+  }
+  .bm-cross-button:after {
+    
+    font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f00d";
+    color:#237c75;
+  }
+  
+  .bm-cross-button > button {
+    outline:none !important
+  }
+
 
   .slide-right {
     -webkit-animation: slide-right 1s cubic-bezier(0.250, 0.460, 0.450, 0.940)linear both;
@@ -247,10 +294,7 @@
   .close-menu {
     background: transparent;
     border: none;
-    color: #025CA0;
     margin-left: 5em;
     font-size: 1.2em
   }
-
-
 }

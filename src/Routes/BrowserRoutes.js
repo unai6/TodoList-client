@@ -23,7 +23,7 @@ export function BrowserRoutes() {
     return (
         <Router>
             <AuthState>
-                <div className='flex-container'>
+                <div>
                     {
                         token ? <Nav /> : null
                     }
@@ -43,7 +43,7 @@ export function BrowserRoutes() {
                                 <PrivateRoute path='/:userId/alltasks' component={AllTasks} />
                                 <PrivateRoute path='/:userId/pendingTasks' component={PendingTasks} />
                                 <PrivateRoute path='/:userId/completedTasks' component={CompletedTasks} />
-                                <PrivateRoute path='/:userId/importantTasks' component={ImportantTasks}/>
+                                <PrivateRoute path='/:userId/importantTasks' component={ImportantTasks} />
                             </Switch>
                         </div>
                     </div>

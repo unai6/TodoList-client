@@ -19,16 +19,17 @@ export const Home = () => {
     const responseGoogle = async (data) => {
         try {
             const result = await signUpWithGoogle(data);
+         
+            localStorage.setItem('token', result.data.token)
+            localStorage.setItem('user', JSON.stringify(result.data.user))
              history.push(`/dashboard/${result.data.user._id}`)
+             document.location.reload()
            
 
         } catch (error) {
             console.log(error)
         }
     }
-
-
-
 
 
     return (
@@ -41,8 +42,7 @@ export const Home = () => {
                 onFailure={responseGoogle}
                 redirectUri={'https://todo.unaigo.com'}
 
-            />,
-            {/* <a href={googleData}>Login with Google</a> */}
+            />
             <>
                 {
                     user ?

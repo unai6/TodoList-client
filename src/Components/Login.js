@@ -19,9 +19,9 @@ export const Login = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <input
                     className='form-control'
-                    name='nickName'
+                    name='email'
                     type='text'
-                    placeholder='NickName'
+                    placeholder='email'
                     ref={register({ required: true })}
                 />
                 <input

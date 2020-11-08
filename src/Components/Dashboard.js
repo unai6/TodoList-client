@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../CSS/dashboard.css'
-import { getUserData, editTask } from '../api/apiCalls';
+import { getUserData, editTask, deleteTask } from '../api/apiCalls';
 import { Link } from 'react-router-dom'
 import Moment from 'react-moment';
 import Modal from "react-bootstrap/Modal";
@@ -42,7 +42,7 @@ const Dashboard = (props) => {
         getDashboard()
     }, [props.match.params.userId]);
 
-    const EditProfile = async (data) => {
+    const editTaskHandler = async (data) => {
         try {
             await editTask(props.match.params.userId, activeItem._id, data)
             setInfoSent(!infoSent)
@@ -51,6 +51,14 @@ const Dashboard = (props) => {
             setError('Lo sentimos, No se puede actualizar esta tarea')
         }
 
+    }
+    const deleteTaskHandler = async (data) => {
+        try {
+            await deleteTask(props.match.params.userId, activeItem._id, data)
+
+        } catch (error) {
+            console.log(error)
+        }
     }
 
 
@@ -89,7 +97,7 @@ const Dashboard = (props) => {
                                         :
                                         <span className=
                                             {
-                                                !task.completed  ?
+                                                !task.completed ?
                                                     'text-danger' :
                                                     task.completed ?
                                                         'text-success' :
@@ -103,7 +111,7 @@ const Dashboard = (props) => {
                                         </span>
                                 }
                                     <span className={
-                                        !task.completed  ?
+                                        !task.completed ?
                                             'text-danger taskBall-1' :
                                             task.completed ?
                                                 'text-success taskBall-1' :
@@ -115,13 +123,13 @@ const Dashboard = (props) => {
                                     }>
                                         {<i className="fas fa-circle ball-state"></i>}
                                     </span>
-                                    
+
                                     <span className={
                                         task.important ?
-                                        'text-warning' :
-                                        'text-dark'
+                                            'text-warning' :
+                                            'text-dark'
                                     }>
-                                    {<i className="fas fa-circle ball-state"></i>}
+                                        {<i className="fas fa-circle ball-state"></i>}
                                     </span>
                                 </div>
                                 <div>
@@ -137,10 +145,10 @@ const Dashboard = (props) => {
                 activeItem ?
                     <Modal show={isOpen} onHide={hideModal}>
                         <Modal.Body>
-                            <form onSubmit={handleSubmit(EditProfile)}>
+                            <form onSubmit={handleSubmit(editTaskHandler)}>
                                 {errors.name && <span> {errors.name.message ? errors.name.message : 'Este campo es obligatorio'} </span>}
                                 <span>{error}</span>
-                                <label>Nombre</label>
+                                <label className='text-info font-weight-bold '>Nombre</label>
                                 <input
                                     defaultValue={activeItem.name}
                                     className='form-control'
@@ -152,7 +160,7 @@ const Dashboard = (props) => {
                                 {errors.category && <span> {errors.category.message ? errors.nickName.message : 'Este campo es obligatorio'} </span>}
 
                                 <div>
-                                    <label>
+                                    <label className='text-info font-weight-bold '>
                                         Categoría
                                         <input
                                             className='form-control'
@@ -177,7 +185,7 @@ const Dashboard = (props) => {
                                     </label>
                                 </div>
                                 {errors.description && <span> {errors.description.message ? errors.description.message : 'Este campo es obligatorio'} </span>}
-                                <label>Descripción</label>
+                                <label className='text-info font-weight-bold '>Descripción</label>
                                 <input
                                     className='form-control'
                                     name='description'
@@ -189,21 +197,24 @@ const Dashboard = (props) => {
 
 
                                 <div className="switch-button">
-                                    <label>Estado de la tarea</label>
+                                    <label className='text-info font-weight-bold '>Estado de la tarea</label>
                                     <input className="switch-button__checkbox" type="checkbox" id="switch-label" name="completed" onClick={handleTrueOrFalse} ref={register} />
                                     <label htmlFor="switch-label" className="switch-button__label"></label>
                                 </div>
                                 <div className="switch-button">
-                                    <label>Marcar como importante</label>
-                                    <input  className="switch-button__checkbox" type="checkbox" id="switch-label-2" name="important" onClick={handleTrueOrFalse} ref={register} />
+                                    <label className='text-info font-weight-bold '>Marcar como importante</label>
+                                    <input className="switch-button__checkbox" type="checkbox" id="switch-label-2" name="important" onClick={handleTrueOrFalse} ref={register} />
                                     <label htmlFor="switch-label-2" className="switch-button__label"></label>
                                 </div>
                                 {
-                                infoSent 
-                                ?
-                                    <p>¡Tarea Actualizada!</p>
-                                :
-                                    <button>Actualizar</button>
+                                    infoSent
+                                        ?
+                                        <p className='font-weight-bold'>¡Tarea Actualizada!</p>
+                                        :
+                                        <div className='d-flex justify-content-center mt-4'>
+                                            <button className='btn btn-info mr-2'>Actualizar</button>
+                                            <button className='btn btn-danger ml-2' onClick={deleteTaskHandler}>Eliminar</button>
+                                        </div>
                                 }
                             </form>
                         </Modal.Body>
