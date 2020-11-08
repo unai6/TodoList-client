@@ -68,7 +68,7 @@ const Dashboard = (props) => {
             <div className='div-tasks'>
                 <div className='d-flex justify-content-between mb-3'>
                     <span className='tasks-headers'>ÚLTIMAS TAREAS</span>
-                    <span className='tasks-headers'>FECHA DE CREACIÓN</span>
+                    <span className='tasks-headers creation-date'>FECHA DE CREACIÓN</span>
                 </div>
                 {
 
