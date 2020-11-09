@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
-import { useForm } from "react-hook-form";
+import {Link} from 'react-router-dom';
+import { useForm} from "react-hook-form";
 import AuthContext from '../auth/authContext';
 
 export const Login = () => {
@@ -16,16 +17,18 @@ export const Login = () => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit(onSubmit)}>
+        <Link to={`/`} className='text-info ml-3'>{'< Atrás'}</Link> 
+        <h3 className='text-info text-center mt-4'>Entrar en mi cuenta</h3>
+            <form className='w-50 mx-auto mt-5' onSubmit={handleSubmit(onSubmit)}>
                 <input
-                    className='form-control'
+                    className='form-control mb-2'
                     name='email'
                     type='text'
                     placeholder='email'
                     ref={register({ required: true })}
                 />
                 <input
-                    className='form-control'
+                    className='form-control mb-2'
                     name='password'
                     type='password'
                     placeholder='password'
@@ -36,7 +39,8 @@ export const Login = () => {
                     name='remember'
                     ref={register}
                 />
-                <button>Acceder en mi cuenta</button>
+                <span className='ml-2'>Recuérdame</span>
+                <button className='btn btn-info d-block mx-auto mt-3'>Acceder en mi cuenta</button>
             </form>
 
         </div>

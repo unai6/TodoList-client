@@ -197,7 +197,7 @@ const CompletedTasks = (props) => {
                                 {
                                     infoSent
                                         ?
-                                        <p className='font-weight-bold'>¡Tarea Actualizada!</p>
+                                        <p className='font-weight-bold text-success'>¡Tarea Actualizada!</p>
                                         :
                                         <div className='d-flex justify-content-center mt-4'>
                                             <button className='btn btn-info mr-2'>Actualizar</button>

@@ -192,7 +192,7 @@
     position: absolute;
     left: 0px;
     top: 0px;
-    width: 32vw !important;
+    width: 6vw !important;
     height: 11vh !important;
     margin: 0px;
     padding: 0px;
@@ -201,6 +201,7 @@
     background: transparent;
     cursor: pointer;
     outline: none;
+    transform: translate(-2%, -142%);
   }
   
   .bm-item {

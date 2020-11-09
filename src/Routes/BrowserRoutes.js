@@ -33,7 +33,6 @@ export function BrowserRoutes() {
                             token ? <SideBar /> : null
                         }
                         <div>
-
                             <Switch>
                                 <AnonRoute path="/" exact component={Home} />
                                 <AnonRoute path="/signup" component={Signup} />

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link} from "react-router-dom";
 import '../CSS/create-task.css';
 import { createTask } from '../api/apiCalls';
 // import Select from 'react-select';
@@ -32,6 +32,7 @@ export const NewTask = (props) => {
 
     return (
         <div className='bg-component'>
+            <Link to={`/dashboard/${props.match.params.userId}`}><button className='btn-create-task position-absolute'> {'< ATRÁS'}</button></Link>
             <div className='div-createTask'>
             <h4 className='h4-newTask'>Crea tu nueva tarea</h4>
                 <form className='form-newTask' onSubmit={handleSubmit(onSubmit)}>
