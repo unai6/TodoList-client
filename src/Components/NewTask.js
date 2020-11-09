@@ -61,7 +61,7 @@ export const NewTask = (props) => {
                         </label>
                     </div>
                     {errors.description && <span className='text-danger'> Este campo es obligatorio </span>}
-                    <input
+                    <textarea
                         className='form-control'
                         name='description'
                         type='text'

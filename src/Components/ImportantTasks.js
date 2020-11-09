@@ -168,7 +168,7 @@ const ImportantTasks = (props) => {
                                 </div>
                                 {errors.description && <span> {errors.description.message ? errors.description.message : 'Este campo es obligatorio'} </span>}
                                 <label className='text-info font-weight-bold '>Descripción</label>
-                                <input
+                                <textarea
                                     className='form-control'
                                     name='description'
                                     type='text'
