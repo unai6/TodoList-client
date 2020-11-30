@@ -154,7 +154,7 @@ const CompletedTasks = (props) => {
 
                                 {errors.taskDay && <span> {errors.taskDay.message ? errors.name.message : 'Este campo es obligatorio'} </span>}<br />
                                 <span>{error}</span>
-                                <label className='text-info'><b>Fecha</b></label>
+                                <label className='text-info'><b>Fecha</b></label><br/>
                                 <DatePicker 
                                 timeCaption="time"
                                 timeFormat="HH:mm" 

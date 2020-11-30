@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 import Moment from 'react-moment';
 import Modal from "react-bootstrap/Modal";
 import { useForm } from "react-hook-form";
-import DatePicker, { registerLocale, setDefaultLocale} from "react-datepicker"; 
-import  "react-datepicker/dist/react-datepicker.css";
+import DatePicker, { registerLocale, setDefaultLocale } from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import es from 'date-fns/locale/es';
 registerLocale("es", es);
 
@@ -36,7 +36,7 @@ const PendingTasks = (props) => {
         setActiveItem(task)
     };
 
-        
+
 
 
     useEffect(() => {
@@ -124,7 +124,7 @@ const PendingTasks = (props) => {
                                             </div>
                                             <div>
                                                 <span className='date'><Moment format="D MMM YYYY HH:mm ">{task.taskDay}</Moment></span>
-                                                
+
                                             </div>
                                         </>
                                         :
@@ -154,24 +154,24 @@ const PendingTasks = (props) => {
                                     ref={register}
                                 />
 
-                                {errors.taskDay && <span> {errors.taskDay.message ? errors.name.message : 'Este campo es obligatorio'} </span>}<br/>
+                                {errors.taskDay && <span> {errors.taskDay.message ? errors.name.message : 'Este campo es obligatorio'} </span>}<br />
                                 <span>{error}</span>
-                                <label className='text-info'><b>Fecha</b></label><br/>
-                      
-                                <DatePicker 
-                                timeCaption="time"
-                                timeFormat="HH:mm" 
-                                timeIntervals={5}
-                                showTimeSelect  
-                                dateFormat="dd/MM/yyyy HH:mm aa" 
-                                name='taskDay' 
-                                className='form-control' 
-                                locale="es" 
-                                selected={startDate} 
-                                onChange={date => setStartDate(date)} 
+                                <label className='text-info'><b>Fecha</b></label><br />
+
+                                <DatePicker
+                                    timeCaption="time"
+                                    timeFormat="HH:mm"
+                                    timeIntervals={5}
+                                    showTimeSelect
+                                    dateFormat="dd/MM/yyyy HH:mm aa"
+                                    name='taskDay'
+                                    className='form-control'
+                                    locale="es"
+                                    selected={startDate}
+                                    onChange={date => setStartDate(date)}
 
                                 />
-                                <input name='taskDay' type='hidden' value={startDate} ref={register({required:true})}/>
+                                <input name='taskDay' type='hidden' value={startDate} ref={register({ required: true })} />
 
                                 {errors.category && <span> {errors.category.message ? errors.nickName.message : 'Este campo es obligatorio'} </span>}
 
