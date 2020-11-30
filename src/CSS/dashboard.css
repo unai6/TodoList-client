@@ -1,4 +1,7 @@
-@media only screen and (min-device-width:320px) and (max-device-width:768px) and (orientation: portrait){
+@media only screen 
+and (min-device-width:320px) 
+and (max-device-width:768px) 
+and (orientation: portrait){
     .bg-component {
         background: #4399B5;
         width: 100vw;
@@ -113,6 +116,126 @@
         padding-bottom: .5em;
     }
 
+}
+
+@media only screen 
+and (min-device-width: 320px) 
+and (max-device-height:600px) 
+and (orientation:landscape) {
+    .bg-component {
+        background: #4399B5;
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+    }
+
+    .logo {
+        height: 6em !important;
+        position: relative;
+        width: 6em !important;
+        bottom: 2em;
+        left: 1.5em;
+    }
+
+    .h2-name {
+        margin-right: 2em;
+        color: #E16F2C;
+        position: absolute;
+        transform: translate(30%, -174%);
+        font-size: 1.5em;
+    }
+
+    .p-title-tasks {
+        float: right;
+        position: relative;
+        right: 3.5em;
+    }
+
+    .btn-logout {
+        border: none;
+        background: transparent;
+        font-size: 1.1em;
+        outline: none !important;
+        color: #40B7AD;
+        font-weight: 600;
+    }
+
+    .btn-categories {
+        background: #E16F2C;
+        border: none;
+        padding: 1em;
+        color: white;
+        border-radius: 5px;
+        position: relative;
+        bottom: 5.4em;
+    }
+    .creation-date{
+        position: relative;
+
+    }
+
+    .btn-create-task {
+        background: #E16F2C;
+        border: none;
+        padding: 1em;
+        color: white;
+        border-radius: 5px;
+        position: relative;
+        left: 10em;
+        top: 1.4em;
+        height: 3.3em;
+        outline: none;
+    
+    }
+
+    .dashboard {
+        background: white
+    }
+
+    .div-tasks {
+        background: white;
+        position: relative;
+        top: 2.75em;
+        min-height: 50%;
+        padding: 1em;
+        margin-left: 1em;
+        margin-right: 1em;
+        border-radius: 5px;
+        font-size: 1.1em;
+        font-weight: 600;
+    }
+
+    .vertical-lign{
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        border: 1px solid #40B7AD;
+        left: 60%;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+    .tasks-headers{
+        color:#FF6712;
+        width: 5em;
+    }
+
+    .date{
+        color: #00526C;
+    }
+    .btn-newTask-short{
+        background: #E16F2C;
+        color: white;
+        border: none;
+        margin-top: 1em !important;
+        border-radius: 5px;
+        display: block;
+        margin: auto;
+        padding-right: 1em;
+        padding-left: 1em;
+        padding-top: .5em;
+        padding-bottom: .5em;
+    }
+   
 }
 
 @media (min-width:1024px) {

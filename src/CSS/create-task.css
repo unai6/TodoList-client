@@ -1,4 +1,7 @@
-@media only screen and (min-device-width:320px) and (max-device-width:768px) and (orientation: portrait){
+@media only screen 
+and (min-device-width:320px) 
+and (max-device-width:768px) 
+and (orientation: portrait){
 
     .div-createTask{
         background: white;
@@ -24,7 +27,79 @@
     }
 
     .task-name{
-        width:6.5em
+        width:15.5em
+    }
+
+    .taskBall-1{
+        position: absolute;
+        right: 98vw;
+    }
+
+    .switch-button__checkbox {
+        display: none;
+    }
+
+    .switch-button__label {
+        background-color: #dc3545;
+        width: 2rem;
+        height: 1rem;
+        border-radius: 3rem;
+        display: inline-block;
+        position: relative;
+        transform: translate(1em, .8em);
+    }
+
+    .switch-button__label:before {
+        transition: .3s;
+        display: block;
+        position: absolute;
+        width: 1rem;
+        height: 1rem;
+        background-color: white;
+        content: '';
+        border-radius: 50%;
+        box-shadow: inset 0px 0px 0px 1px black;
+    }
+
+    .switch-button__checkbox:checked+.switch-button__label {
+        background-color: #00a878;
+    }
+
+    .switch-button__checkbox:checked+.switch-button__label:before {
+        transform: translateX(1rem);
+    }
+}
+
+@media only screen 
+and (min-device-width:320px) 
+and (max-device-height:600px)
+and (orientation: landscape){
+    
+    .div-createTask{
+        background: white;
+        position: relative;
+        top: 5.75em;
+        min-height: 80vh;
+        padding: 1em;
+        margin-left: 1em;
+        margin-right: 1em;
+        border-radius: 5px;
+        font-size: 1.1em;
+        font-weight: 600;
+    }
+    .h4-newTask{
+        text-align: center;
+        color: #4399B5;
+        padding-top: .2em;
+    }
+
+    .ball-state{
+        position: absolute;
+        left:8.5em
+    }
+
+    .task-name{
+        width:15.5em
     }
 
     .taskBall-1{
