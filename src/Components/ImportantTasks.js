@@ -5,9 +5,14 @@ import { Link } from 'react-router-dom'
 import Moment from 'react-moment';
 import Modal from "react-bootstrap/Modal";
 import { useForm } from "react-hook-form";
+import DatePicker, { registerLocale, setDefaultLocale} from "react-datepicker"; 
+import  "react-datepicker/dist/react-datepicker.css";
+import es from 'date-fns/locale/es';
+registerLocale("es", es);
 
 const ImportantTasks = (props) => {
-
+    setDefaultLocale('es')
+    const [startDate, setStartDate] = useState(new Date());
     const { register, handleSubmit, errors } = useForm();
     const [isOpen, setIsOpen] = useState(false);
     const [, setData] = useState('')
@@ -53,10 +58,10 @@ const ImportantTasks = (props) => {
         }
     }
     const deleteTaskHandler = async (data) => {
-        try{
+        try {
             await deleteTask(props.match.params.userId, activeItem._id, data)
 
-        }catch(error){
+        } catch (error) {
             console.log(error)
         }
     }
@@ -68,7 +73,7 @@ const ImportantTasks = (props) => {
             <div className='div-tasks'>
                 <div className='d-flex justify-content-between mb-3'>
                     <span className='tasks-headers'>TAREAS IMPORTANTES</span>
-                    <span className='tasks-headers'>FECHA DE CREACIÓN</span>
+                    <span className='tasks-headers'>FECHA</span>
                 </div>
                 {
 
@@ -85,7 +90,7 @@ const ImportantTasks = (props) => {
 
                                                 <span className=
                                                     {
-                                                        task.important && !task.completed?
+                                                        task.important && !task.completed ?
                                                             'text-warning'
                                                             :
                                                             null
@@ -94,9 +99,9 @@ const ImportantTasks = (props) => {
                                                 </span>
 
                                                 <span className={
-                                                             !task.completed ?
-                                                                'text-danger taskBall-1' :
-                                                                null
+                                                    !task.completed ?
+                                                        'text-danger taskBall-1' :
+                                                        null
                                                 }>
                                                     {task.important && !task.completed ? <i className="fas fa-circle ball-state"></i> : null}
                                                 </span>
@@ -110,7 +115,7 @@ const ImportantTasks = (props) => {
                                                 </span>
                                             </div>
                                             <div>
-                                                <span className='date'><Moment format="D MMM YYYY">{task.createdAt}</Moment></span>
+                                                <span className='date'><Moment format="D MMM YYYY">{task.taskDay}</Moment></span>
                                             </div>
                                         </>
                                         :
@@ -139,6 +144,13 @@ const ImportantTasks = (props) => {
                                     placeholder='Nombre'
                                     ref={register}
                                 />
+
+                                {errors.taskDay && <span> {errors.taskDay.message ? errors.name.message : 'Este campo es obligatorio'} </span>}<br />
+                                <span>{error}</span>
+                                <label className='text-info'><b>Nombre</b></label>
+                                <DatePicker name='taskDay' className='form-control' locale="es" selected={startDate} onChange={date => setStartDate(date)} />
+                                <input name='taskDay' type='hidden' value={startDate} ref={register({ required: true })} />
+
                                 {errors.category && <span> {errors.category.message ? errors.nickName.message : 'Este campo es obligatorio'} </span>}
 
                                 <div>

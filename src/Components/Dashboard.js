@@ -5,9 +5,14 @@ import { Link } from 'react-router-dom'
 import Moment from 'react-moment';
 import Modal from "react-bootstrap/Modal";
 import { useForm } from "react-hook-form";
+import DatePicker, { registerLocale, setDefaultLocale} from "react-datepicker"; 
+import  "react-datepicker/dist/react-datepicker.css";
+import es from 'date-fns/locale/es';
+registerLocale("es", es);
 
 const Dashboard = (props) => {
-
+    setDefaultLocale('es')
+    const [startDate, setStartDate] = useState(new Date());         
     const { register, handleSubmit, errors } = useForm();
     const [isOpen, setIsOpen] = useState(false);
     const [, setData] = useState('')
@@ -68,7 +73,7 @@ const Dashboard = (props) => {
             <div className='div-tasks'>
                 <div className='d-flex justify-content-between mb-3'>
                     <span className='tasks-headers'>ÚLTIMAS TAREAS</span>
-                    <span className='tasks-headers creation-date'>FECHA DE CREACIÓN</span>
+                    <span className='tasks-headers creation-date'>FECHA</span>
                 </div>
                 {
 
@@ -133,7 +138,7 @@ const Dashboard = (props) => {
                                     </span>
                                 </div>
                                 <div>
-                                    <span className='date'><Moment format="D MMM YYYY">{task.createdAt}</Moment></span>
+                                    <span className='date'><Moment format="D MMM YYYY">{task.taskDay}</Moment></span>
                                 </div>
                             </div>
                         )
@@ -157,6 +162,13 @@ const Dashboard = (props) => {
                                     placeholder='Nombre'
                                     ref={register}
                                 />
+
+                                {errors.taskDay && <span> {errors.taskDay.message ? errors.name.message : 'Este campo es obligatorio'} </span>}<br />
+                                <span>{error}</span>
+                                <label className='text-info'><b>Fecha</b></label>
+                                <DatePicker name='taskDay' className='form-control' locale="es" selected={startDate} onChange={date => setStartDate(date)} />
+                                <input name='taskDay' type='hidden' value={startDate} ref={register({ required: true })} />
+
                                 {errors.category && <span> {errors.category.message ? errors.nickName.message : 'Este campo es obligatorio'} </span>}
 
                                 <div>
@@ -209,7 +221,7 @@ const Dashboard = (props) => {
                                 {
                                     infoSent
                                         ?
-                                        <p className='font-weight-bold'>¡Tarea Actualizada!</p>
+                                        <p  className='font-weight-bold text-success'>¡Tarea Actualizada!</p>
                                         :
                                         <div className='d-flex justify-content-center mt-4'>
                                             <button className='btn btn-info mr-2'>Actualizar</button>

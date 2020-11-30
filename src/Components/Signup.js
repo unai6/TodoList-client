@@ -2,21 +2,24 @@ import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { signup } from '../api/apiCalls';
 import { useHistory, Link } from "react-router-dom";
+import Loader from 'react-loader-spinner';
 
 export const Signup = () => {
+    const [isLoading, setIsLoading] =  useState(false);
     const history = useHistory();
     const { register, handleSubmit, errors } = useForm();
-    const [isLoading, setisLoading] = useState(true)
     const [error, setError] = useState('')
 
     const onSubmit = async data => {
         try {
-            await signup(data);
-            setisLoading(false);
+            setIsLoading(true)
+            const result = await signup(data);
+            console.log(result)
+            if(!result) setIsLoading(false);
             history.push('/login')
-
         } catch (error) {
             setError('ya existe un usuario con ese avatar')
+            setIsLoading(false)
         }
     };
 
@@ -69,9 +72,9 @@ export const Signup = () => {
                 <span className='ml-2'>Recuérdame</span>
                 {
                     isLoading ?
-                        <button className='btn btn-info d-block mx-auto mt-3'>Registrarse</button>
+                        <Loader type="TailSpin" color="#00BFFF" className='d-block mx-auto' height={40} width={40} />  
                         :
-                        <p className='text-success'>Gracias por registrate</p>
+                        <button className='btn btn-info d-block mx-auto mt-3'>Registrarse</button>
                 }
             </form>
         </div>

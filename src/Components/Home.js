@@ -1,11 +1,13 @@
-    import React from 'react'
+    import React, {useState} from 'react'
     import '../CSS/home.css';
     import { Link } from 'react-router-dom';
     import { signUpWithGoogle } from '../api/apiCalls';
     import { GoogleLogin } from 'react-google-login';
     import { useHistory } from 'react-router-dom'
-
+    import Loader from 'react-loader-spinner';
+    
     export const Home = () => {
+        const [isLoading, setIsLoading] =  useState(false);
         const history = useHistory()
         const CLIENT_ID = '897202844317-e4dqh3eifnft6p47olbqfkm0iv5fu9k2.apps.googleusercontent.com'
         let user = localStorage.getItem('user');
@@ -18,6 +20,7 @@
 
         const responseGoogle = async (data) => {
             try {
+                setIsLoading(true)
                 const result = await signUpWithGoogle(data);
 
                 localStorage.setItem('token', result.data.token)
@@ -35,7 +38,10 @@
         return (
             <div className='background-home d-flex flex-column justify-content-center mx-auto'>
                 <div id='wave'></div>
-                <div className=' w-50 align-self-center d-flex flex-column justify-content-center mx-auto'>
+
+                {
+                    !isLoading ? 
+                    <div className=' w-50 align-self-center d-flex flex-column justify-content-center mx-auto'>
                     <Link to='/signup' ><button className='btn btn-info p-2 mb-3'>Registrarse</button></Link>
                     <>
                         {
@@ -58,6 +64,10 @@
                     />
 
                 </div>
+                :
+                <Loader type="TailSpin" color="#00BFFF" className='d-block mx-auto' height={150} width={150} />
+                }
+                
                 <div id='wave2'></div>        
             </div>
         )
