@@ -123,7 +123,7 @@ const PendingTasks = (props) => {
                                                 </span>
                                             </div>
                                             <div>
-                                                <span className='date'><Moment format="D MMM YYYY">{task.taskDay}</Moment></span>
+                                                <span className='date'><Moment format="D MMM YYYY HH:mm ">{task.taskDay}</Moment></span>
                                                 
                                             </div>
                                         </>
@@ -158,7 +158,19 @@ const PendingTasks = (props) => {
                                 <span>{error}</span>
                                 <label className='text-info'><b>Fecha</b></label><br/>
                       
-                                <DatePicker  name='taskDay' className='form-control' locale="es"  selected={startDate} onChange={date => setStartDate(date)} />
+                                <DatePicker 
+                                timeCaption="time"
+                                timeFormat="HH:mm" 
+                                timeIntervals={5}
+                                showTimeSelect  
+                                dateFormat="dd/MM/yyyy HH:mm aa" 
+                                name='taskDay' 
+                                className='form-control' 
+                                locale="es" 
+                                selected={startDate} 
+                                onChange={date => setStartDate(date)} 
+
+                                />
                                 <input name='taskDay' type='hidden' value={startDate} ref={register({required:true})}/>
 
                                 {errors.category && <span> {errors.category.message ? errors.nickName.message : 'Este campo es obligatorio'} </span>}
