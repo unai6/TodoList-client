@@ -55,7 +55,19 @@ export const NewTask = (props) => {
                     {errors.taskDay && <span className='text-danger'> Este campo es obligatorio </span>}
                     <span>{error}</span>
                     <label className={isMobile ? 'text-info font-weight-bold mt-2' : 'text-white font-weight-bold mt-2'}>Fecha</label> <br/>
-                    <DatePicker name='taskDay' className='form-control' locale="es" selected={startDate} onChange={date => setStartDate(date)} />
+                    <DatePicker 
+                                timeCaption="time"
+                                timeFormat="HH:mm" 
+                                timeIntervals={5}
+                                showTimeSelect  
+                                dateFormat="dd/MM/yyyy HH:mm aa" 
+                                name='taskDay' 
+                                className='form-control' 
+                                locale="es" 
+                                selected={startDate} 
+                                onChange={date => setStartDate(date)} 
+
+                                />
                     <input name='taskDay' type='hidden' value={startDate} ref={register({ required: true })} />
 
                     {errors.category && <span className='text-danger'>Este campo es obligatorio </span>}

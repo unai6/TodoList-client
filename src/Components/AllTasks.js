@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import DatePicker, { registerLocale, setDefaultLocale} from "react-datepicker"; 
 import  "react-datepicker/dist/react-datepicker.css";
 import es from 'date-fns/locale/es';
+
 registerLocale("es", es);
 
 const AllTasks = (props) => {

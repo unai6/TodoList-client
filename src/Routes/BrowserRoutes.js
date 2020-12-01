@@ -25,12 +25,12 @@ export function BrowserRoutes() {
             <AuthState>
                 <div>
                     {
-                        token ? <Nav /> : null
+                        token && <Nav /> 
                     }
                     <div>
 
                         {
-                            token ? <SideBar /> : null
+                            token && <SideBar />
                         }
                         <div>
                             <Switch>

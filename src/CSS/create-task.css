@@ -23,11 +23,11 @@ and (orientation: portrait){
 
     .ball-state{
         position: absolute;
-        left:8.5em
+        left:7.5em
     }
 
     .task-name{
-        width:15.5em
+        width:5.5em
     }
 
     .taskBall-1{
