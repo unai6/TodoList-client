@@ -126,7 +126,7 @@ const ImportantTasks = (props) => {
                         )
                     })
                 }
-                <div className='vertical-lign'></div>
+                {/* <div className='vertical-lign'></div> */}
             </div>
             {
                 activeItem ?

@@ -157,7 +157,7 @@ const Dashboard = (props) => {
                                     )
                                 })
                             }
-                            <div className='vertical-lign'></div>
+                          
                         </div>
                         {
                             activeItem ?

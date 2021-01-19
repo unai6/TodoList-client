@@ -26,37 +26,31 @@ const SideBar = () => {
 
                     user.userId ?
                         <>
-                        <p className='text-center'>
+                            <p className='text-center'>
                                 <Link onClickCapture={closeMenuHandler} className="menu-item  bm-item btn-handler" to={`/dashboard/${user.userId}`}>
                                     INICIO
                             </Link>
                             </p>
 
                             <p className='text-center'>
-                               <Link onClick={closeMenuHandler} className="menu-item  bm-item btn-handler" to={`/${user.userId}/alltasks`}>
-                                MIS TAREAS
-                            </Link> 
-                            </p>
-
-                            <p className='text-center'>
-                                 <Link onClick={closeMenuHandler} className="menu-item  bm-item btn-handler text-danger font-weight-bold" to={`/${user.userId}/pendingTasks`}>
-                                PENDIENTES
-                            </Link>
-                            </p>
-                           
-                            <p className='text-center'>
-                                 <Link onClick={closeMenuHandler} className="menu-item  bm-item btn-handler text-success font-weight-bold" to={`/${user.userId}/completedTasks`}>
-                                COMPLETADAS
+                                <Link onClick={closeMenuHandler} className="menu-item  bm-item btn-handler text-danger font-weight-bold" to={`/${user.userId}/pendingTasks`}>
+                                    PENDIENTES
                             </Link>
                             </p>
 
                             <p className='text-center'>
-                               <Link onClick={closeMenuHandler} className="menu-item  bm-item btn-handler text-warning font-weight-bold" to={`/${user.userId}/importantTasks`}>
-                                IMPORTANTES
-                            </Link> 
+                                <Link onClick={closeMenuHandler} className="menu-item  bm-item btn-handler text-success font-weight-bold" to={`/${user.userId}/completedTasks`}>
+                                    COMPLETADAS
+                            </Link>
                             </p>
-                            
-                        
+
+                            <p className='text-center'>
+                                <Link onClick={closeMenuHandler} className="menu-item  bm-item btn-handler text-warning font-weight-bold" to={`/${user.userId}/importantTasks`}>
+                                    IMPORTANTES
+                            </Link>
+                            </p>
+
+
                         </>
                         :
                         <>
@@ -67,31 +61,25 @@ const SideBar = () => {
                             </p>
 
                             <p className='text-center'>
-                               <Link onClick={closeMenuHandler} className="menu-item  bm-item btn-handler" to={`/${user._id}/alltasks`}>
-                                MIS TAREAS
-                            </Link> 
-                            </p>
-
-                            <p className='text-center'>
-                                 <Link onClick={closeMenuHandler} className="menu-item  bm-item btn-handler text-danger font-weight-bold" to={`/${user._id}/pendingTasks`}>
-                                PENDIENTES
-                            </Link>
-                            </p>
-                           
-                            <p className='text-center'>
-                                 <Link onClick={closeMenuHandler} className="menu-item  bm-item btn-handler text-success font-weight-bold" to={`/${user._id}/completedTasks`}>
-                                COMPLETADAS
+                                <Link onClick={closeMenuHandler} className="menu-item  bm-item btn-handler text-danger font-weight-bold" to={`/${user._id}/pendingTasks`}>
+                                    PENDIENTES
                             </Link>
                             </p>
 
                             <p className='text-center'>
-                               <Link onClick={closeMenuHandler} className="menu-item  bm-item btn-handler text-warning font-weight-bold" to={`/${user._id}/importantTasks`}>
-                                IMPORTANTES
-                            </Link> 
+                                <Link onClick={closeMenuHandler} className="menu-item  bm-item btn-handler text-success font-weight-bold" to={`/${user._id}/completedTasks`}>
+                                    COMPLETADAS
+                            </Link>
                             </p>
-                            
-                    
-                            
+
+                            <p className='text-center'>
+                                <Link onClick={closeMenuHandler} className="menu-item  bm-item btn-handler text-warning font-weight-bold" to={`/${user._id}/importantTasks`}>
+                                    IMPORTANTES
+                            </Link>
+                            </p>
+
+
+
                         </>
 
                 }

@@ -135,7 +135,7 @@ const PendingTasks = (props) => {
                         )
                     })
                 }
-                <div className='vertical-lign'></div>
+               
             </div>
             {
                 activeItem ?
